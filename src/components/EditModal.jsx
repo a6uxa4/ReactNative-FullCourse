@@ -10,7 +10,6 @@ export default function EditModal({ visible, onCancel }) {
 					placeholder='Введите название'
 					autoCapitalize='none'
 					autoCorrect={false}
-					maxLength={64}
 				/>
 				<View style={styles.buttons}>
 					<Button onPress={onCancel} title='Отмена' color='red' />
