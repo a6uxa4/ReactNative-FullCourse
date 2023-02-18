@@ -1,9 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Platform } from 'react-native'
 
 export default function Navbar() {
 	return (
-		<View style={styles.navbar}>
+		<View
+			style={{
+				...styles.navbar,
+				...Platform.select({
+					ios: styles.navbarsIos,
+					android: styles.navbarsAndroid,
+				}),
+			}}>
 			<Text style={styles.text}>Todo App !</Text>
 		</View>
 	)
@@ -14,11 +21,17 @@ const styles = StyleSheet.create({
 		height: 70,
 		alignItems: 'center',
 		justifyContent: 'flex-end',
-		backgroundColor: '#3949ab',
 		paddingBottom: 10,
 	},
+	navbarsIos: {
+		borderBottomColor: '#3949ab',
+		borderBottomWidth: 1,
+	},
+	navbarsAndroid: {
+		backgroundColor: '#3949ab',
+	},
 	text: {
-		color: 'white',
+		color: Platform.OS === 'ios' ? '#3949ab' : 'white',
 		fontSize: 20,
 	},
 })
