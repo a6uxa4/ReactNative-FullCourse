@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 		alignContent: 'center',
+		marginBottom: 15,
 	},
 	input: {
 		width: '70%',
