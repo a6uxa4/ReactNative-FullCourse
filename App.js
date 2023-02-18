@@ -5,11 +5,8 @@ import MainScreen from './src/screens/MainScreen'
 import TodoScreen from './src/screens/TodoScreen'
 
 export default function App() {
-	const [todos, setTodos] = useState([
-		{ id: '1', title: 'save' },
-		{ id: '2', title: 'work' },
-	])
 	const [todoId, setTodoId] = useState(null)
+	const [todos, setTodos] = useState([])
 
 	function addTodo(title) {
 		setTodos((prev) => [
@@ -19,6 +16,17 @@ export default function App() {
 				title,
 			},
 		])
+	}
+
+	function updateTodo(id, title) {
+		setTodos((old) =>
+			old.map((todo) => {
+				if (todo.id === id) {
+					todo.title = title
+				}
+				return todo
+			}),
+		)
 	}
 
 	function deleteHandler(id) {
@@ -54,6 +62,7 @@ export default function App() {
 		const selectedTodo = todos.find((todo) => todo.id === todoId)
 		content = (
 			<TodoScreen
+				onSave={updateTodo}
 				deleteHandler={deleteHandler}
 				todo={selectedTodo}
 				goBack={() => setTodoId(null)}
