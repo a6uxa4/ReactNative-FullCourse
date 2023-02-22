@@ -10,6 +10,7 @@ export default function TodoScreen({ goBack, todo, deleteHandler, onSave }) {
 		onSave(todo.id, title)
 		setModal(false)
 	}
+        return (
 		<View>
 			<EditModal
 				value={todo.title}
